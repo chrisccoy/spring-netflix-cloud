@@ -20,6 +20,7 @@
 
 	<modules>
 		<module>server</module>
+		<module>server2</module>		
 		<module>client</module>
 	</modules>
 

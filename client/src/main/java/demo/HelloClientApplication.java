@@ -22,9 +22,20 @@ public class HelloClientApplication {
 	@Autowired
 	HelloClient client;
 
-	@RequestMapping("/")
-	public String hello() {
+	@Autowired
+	HelloClient2 client2;
+
+	@RequestMapping("/dothis")
+	public String doFirst() {
 		return client.hello();
+	}
+	@RequestMapping("/dothat")
+	public String doSecond() {
+		return client2.hello2();
+	}
+	@RequestMapping("/doboth")
+	public String doBoth() {
+		return client.hello() +" " + client2.hello2();
 	}
 
 	public static void main(String[] args) {
@@ -33,7 +44,13 @@ public class HelloClientApplication {
 
 	@FeignClient("HelloServer")
 	interface HelloClient {
-		@RequestMapping(value = "/", method = GET)
+		@RequestMapping(value = "/microsvc1/dosomething", method = GET)
 		String hello();
+	}
+	@FeignClient("HelloServer2")
+	interface HelloClient2 {
+		
+		@RequestMapping(value = "/microsvc2/dosomethingelse", method = GET)
+		String hello2();
 	}
 }
