@@ -1,0 +1,8 @@
+#Build an image from this location:
+# /home/chrisccoy/git/chrisccoy/spring-netflix-cloud/client
+sudo docker build -t chrisccoy/microclnt .
+# Run Container Detached with a name of microclnt
+sudo docker run  --name microclnt -d -t chrisccoy/microclnt
+# TODO --link eureka_coy:eureka_coy should allow for network to resolve via hostname
+# I have not been able to get this working- hardocded IP address seems to work fine, but not a tenable solution.
+sudo docker run  --name microclnt -d -t chrisccoy/microclnt
